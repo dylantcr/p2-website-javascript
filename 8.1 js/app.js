@@ -29,11 +29,15 @@ function Sum() {
         SetResult(Result);
     }
 }
-function Subtract() {
+function Divide() {
     if (GetValues()) {
         Result = Value1 / Value2;
         SetResult(Result);
-    }
+
+        // afronden 1deci
+        let rounded = Result.toFixed(1);
+        SetResult(rounded);
+    }   
 }
 
 function SetResult(Result){
