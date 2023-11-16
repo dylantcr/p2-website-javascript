@@ -7,4 +7,4 @@ function removeModal() {
     modal.style.display = "none";
 }
 
-showModal()
+showModal();
