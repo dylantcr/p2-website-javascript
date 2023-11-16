@@ -1,0 +1,21 @@
+.venster {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 30vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: lightblue;
+}
+
+.cookiecontent {
+    background-color: lightcyan;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid black;
+    width: 70%;
+    opacity: 0.9;
+}
