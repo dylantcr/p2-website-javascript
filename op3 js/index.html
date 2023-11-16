@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document dyl op3</title>
+</head>
+<body>
+    <h1>1.3 producten toevoegen</h1>
+
+    <form>
+        <label for="productInvoer">voer een product in:</label>
+        <input type="text" id="productInvoer" name="product" required>
+        <button type="button" onclick="logProductValue()">log product waarde</button>
+    </form>
+
+    <script>
+        function logProductValue() {
+            var productWaarde = document.getElementById("productInvoer").value;
+            console.log("Ingevoerde product: " + productWaarde);   
+        }
+    </script>
+</body>
+</html>
