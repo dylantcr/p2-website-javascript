@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie wall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="showCookieWall()">open Cookiewall</button>
+
+    <div id="overlay"></div>
+
+    <div id="cookiewall">
+        <p>geef je leeftijd op</p>
+        <input type="number" id="ageInput" placeholder="Typ Leeftijd">
+        <button onclick="checkAge()">Verifiëren</button>
+    </div>
+
+    <div class="red-page" id="redPage">
+        <p>jammer, je bent te jong</p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
