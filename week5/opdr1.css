@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#start-button, #green-box {
+    display: none;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    font-size: 18px;
+}
+
+#red-box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 20px;
+    font-size: 18px;
+}
+
+#green-box {
+    background-color: green;
+}
