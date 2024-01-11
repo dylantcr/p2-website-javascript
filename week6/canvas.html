@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Opdracht 5.2 Dylan Mahn</title>
+
+<style>
+#KleurenBlok {
+background-color: white;
+width: 200px;
+height: 200px
+}
+#Startknop {
+ padding: 10px 20px;
+ margin: 10px;
+ font-size: 30px;
+}
+</style>
+
+</head>
+<body>
+<button id="Start Knop">Start het spel</button>
+<div id="KleurenBlok"></div>
+<script>
+// Elementen ophalen uit de DOM
+const StartKnop = document.getElementById('Startknop'); const KleurenBlok = document.getElementById('KleurenBlok');
+// Variabelen voor het bijhouden van start- en eindtijd
+ let startTime, endTime;
+ 
+// Eventlistener toevoegen aan de startknop
+ Startknop.addEventListener('click', startGame);
+// Functie om het spel te starten
+ function startGame() {
+
+// Kleur van het blok instellen op rood
+ KleurenBlok.style.backgroundColor = 'red';
+
+// Eventlistener toevoegen aan het kleurenblok voor het einde van het spel
+ KleurenBlok.addEventListener('click', endGame);
+
+// Willekeurige tijd instellen voor het veranderen van kleur naar groen
+ const randomTime = Math.random() * 10000;
+
+// Timer instellen voor het veranderen van kleur naar groen
+ setTimeout(() = {
+KleurenBlok.style.backgroundColor = 'green';
+startTime = new Date().getTime(); // Starttijd opslaan
+}, randomTime);
+}
+
+
+// Functie om het spel te beëindigen
+function endGame() {
+}
+// Controleren of de kleur groen is (gebruiker klikte op tijd)
+if (KleurenBlok.style.backgroundColor === 'green') {
+}
+endTime = new Date().getTime(); // Eindtijd opslaan
+const reactionTime = endTime - startTime; // Reactietijd berekenen alert(Je reactietijd was ${reaction Time} milliseconden.`);
+else {
+}
+alert('Je was te vroeg!');
+// Kleur van het blok terugzetten naar wit
+KleurenBlok.style.backgroundColor = 'white';
+
+// Eventlistener verwijderen om te voorkomen dat het spel doorgaat
+
+KleurenBlok.removeEventListener('click', endGame);
+</script>
+
+</body>
+</html>
