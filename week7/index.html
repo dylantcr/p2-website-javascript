@@ -3,16 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Weer Applicatie</title>
+  <title>Weer app Dylan</title>
 </head>
 <body>
-  <div class="container">
-    <label for="locationInput">Locatie:</label>
-    <input type="text" id="locationInput" placeholder="Voer locatie in">
-    <button id="getWeatherBtn">Haal weer op</button>
-    <div id="weatherInfo"></div>
-  </div>
-  <script src="script.js"></script>
+
+  <style>
+
+    body {
+      background-color: brown;
+    }
+
+    p {
+      color: blue;
+    }
+    
+  </style>
+ 
+  <input type="text" id="locationInput" placeholder="Voer locatie in">
+  <button onclick="getWeather()">Haal Weer Op</button>
+  <div id="weatherResults"></div>
+  <div id="errorMessage"></div>
+ 
+  <script>
+    const locationInput = document.getElementById('locationInput');
+    const weatherResults = document.getElementById('weatherResults');
+    const errorMessage = document.getElementById('errorMessage');
+ 
+    function getWeather() {
+      const apiKey = '69c059b930e00d7d7ba25cf134a4cd77';
+      const location = locationInput.value;
+      const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+ 
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Locatie niet gevonden');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const temperature = convertKelvinToCelsius(data.main.temp);
+          const humidity = data.main.humidity;
+          const description = data.weather[0].description;
+          const windSpeed = data.wind.speed;
+          const sunrise = new Date(data.sys.sunrise * 1000);
+          const sunset = new Date(data.sys.sunset * 1000);
+ 
+          // Toon weerdata in de DOM
+          weatherResults.innerHTML = `
+            <p>Temperatuur: ${temperature}°C</p>
+            <p>Luchtvochtigheid: ${humidity}%</p>
+            <p>Beschrijving: ${description}</p>
+            <p>Windsnelheid: ${windSpeed} m/s</p>
+            <p>Zonsopgang: ${sunrise.toLocaleTimeString()}</p>
+            <p>Zonsondergang: ${sunset.toLocaleTimeString()}</p>
+          `;
+ 
+          // Wis eventuele foutmelding
+          errorMessage.innerText = '';
+ 
+          // Sla de laatst opgevraagde locatie op in Local Storage
+          localStorage.setItem('lastLocation', location);
+        })
+        .catch(error => {
+          // Toon foutmelding bij fout in API-aanroep
+          weatherResults.innerHTML = '';
+          errorMessage.innerText = error.message;
+        });
+    }
+ 
+    // Laad de laatst opgevraagde locatie bij het herladen van de pagina
+    window.onload = function() {
+      const lastLocation = localStorage.getItem('lastLocation');
+      if (lastLocation) {
+        locationInput.value = lastLocation;
+      }
+    };
+ 
+    // Hulpmethode om Kelvin naar Celsius om te zetten
+    function convertKelvinToCelsius(kelvin) {
+      return kelvin - 273.15;
+    }
+  </script>
+ 
 </body>
 </html>
